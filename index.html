@@ -294,7 +294,6 @@
         <li><a href="#services">Services</a></li>
         <li><a href="#portfolio">Portfolio</a></li>
         <li><a href="#fine-art">Fine Art</a></li>
-        <li><a href="#testimonials">Testimonials</a></li>
         <li><a href="#contact" class="nav-cta">Request a Consultation</a></li>
       </ul>
       <button class="nav-toggle" aria-label="Open menu">&#9776;</button>
@@ -507,40 +506,6 @@
     </div>
   </section>
 
-  <!-- TESTIMONIALS -->
-  <section id="testimonials">
-    <div class="testimonials-inner">
-      <p class="eyebrow">Client Voices</p>
-      <h2>What designers and homeowners say.</h2>
-      <div class="testimonials-grid">
-
-        <div class="testimonial-card">
-          <blockquote>"Breanna is our first call for any project where the finish needs to be extraordinary. She understands design intent — and she makes us look good. Our clients always ask who did the work."</blockquote>
-          <div class="testimonial-attr">
-            <strong>Interior Design Studio</strong>
-            South Florida
-          </div>
-        </div>
-
-        <div class="testimonial-card">
-          <blockquote>"We never thought about what the walls could do until Breanna showed us. The way the plaster catches the evening light — it is the room everyone gravitates to."</blockquote>
-          <div class="testimonial-attr">
-            <strong>Private Homeowner</strong>
-            South Florida
-          </div>
-        </div>
-
-        <div class="testimonial-card">
-          <blockquote>"Our guests consistently mention the atmosphere in the lobby. Breanna's work is a significant part of that. It looks better now than the day it was finished."</blockquote>
-          <div class="testimonial-attr">
-            <strong>Hospitality Developer</strong>
-            South Florida
-          </div>
-        </div>
-
-      </div>
-    </div>
-  </section>
 
   <!-- SPECIALTY — dark brick, secondary focus -->
   <section id="specialty">
@@ -690,6 +655,12 @@
     </div>
   </section>
 
+  <!-- STICKY CTA -->
+  <a href="#contact" class="sticky-cta" aria-label="Start a conversation">
+    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg>
+    <span>Let's Talk</span>
+  </a>
+
   <!-- FOOTER -->
   <footer>
     <div class="footer-inner">
@@ -720,6 +691,17 @@
       });
     }, { threshold: 0.3 });
     sections.forEach(s => observer.observe(s));
+
+    // Sticky CTA — show after hero, hide near contact form
+    const stickyCta = document.querySelector('.sticky-cta');
+    const heroEl = document.getElementById('hero');
+    const contactEl = document.getElementById('contact');
+    window.addEventListener('scroll', () => {
+      const scrollY = window.scrollY;
+      const pastHero = scrollY > heroEl.offsetHeight * 0.6;
+      const nearContact = contactEl.getBoundingClientRect().top < window.innerHeight * 0.8;
+      stickyCta.classList.toggle('visible', pastHero && !nearContact);
+    }, { passive: true });
 
     // Carousel arrow buttons
     document.querySelectorAll('.carousel-wrap').forEach(wrap => {
