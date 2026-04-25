@@ -646,10 +646,34 @@
           <input type="email" name="email" placeholder="Email Address" required />
         </div>
         <div class="form-row">
-          <input type="text" name="phone" placeholder="Phone (optional)" />
-          <input type="text" name="project-type" placeholder="What are you looking for? (painting, surface finish, mural, not sure yet…)" />
+          <input type="tel" name="phone" placeholder="Phone Number" required />
+          <select name="project-type" required>
+            <option value="" disabled selected>What are you interested in?</option>
+            <option value="painting">Original Painting or Commission</option>
+            <option value="decorative-finish">Decorative Wall Finish</option>
+            <option value="mural">Mural or Large-Scale Work</option>
+            <option value="multiple">Multiple Services</option>
+            <option value="not-sure">Not Sure Yet — Just Exploring</option>
+          </select>
         </div>
-        <textarea name="message" rows="5" placeholder="Tell me a bit about your project — the space, any inspiration, and what you have in mind..." required></textarea>
+        <div class="form-row">
+          <select name="timeline">
+            <option value="" disabled selected>When are you looking to start?</option>
+            <option value="asap">As soon as possible</option>
+            <option value="1-3-months">Within 1–3 months</option>
+            <option value="3-6-months">3–6 months out</option>
+            <option value="planning">Just planning ahead</option>
+          </select>
+          <select name="how-found">
+            <option value="" disabled selected>How did you find me?</option>
+            <option value="referral">Referral</option>
+            <option value="instagram">Instagram</option>
+            <option value="google">Google Search</option>
+            <option value="designer">My Designer / Architect</option>
+            <option value="other">Other</option>
+          </select>
+        </div>
+        <textarea name="message" rows="4" placeholder="Anything else you'd like to share — the space, inspiration, or ideas you have in mind..."></textarea>
         <button type="submit" class="btn-primary">Begin the Conversation</button>
       </form>
     </div>
