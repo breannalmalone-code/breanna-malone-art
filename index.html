@@ -1,0 +1,736 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Breanna Malone | Fine Art &amp; Decorative Surfaces — Palm Beach, FL</title>
+  <meta name="description" content="Fine artist specializing in original paintings, decorative finishes, and private commissions. Based in West Palm Beach, serving all of South Florida. Currently accepting select commissions." />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;1,300;1,400&family=Jost:wght@300;400;500&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="style.css" />
+  <style>
+    /* TRUST STRIP */
+    .trust-strip {
+      background: transparent;
+      padding: 2.5rem var(--gutter);
+    }
+    .trust-strip-inner {
+      max-width: var(--max);
+      margin: 0 auto;
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 2rem;
+      text-align: center;
+      background: rgba(255, 252, 248, 0.40);
+      backdrop-filter: blur(4px);
+      -webkit-backdrop-filter: blur(4px);
+      border: 1px solid rgba(184, 140, 48, 0.06);
+      padding: 2.5rem 2rem;
+    }
+    .trust-strip-inner { position: relative; }
+    .trust-item {
+      font-family: var(--sans);
+      font-size: 0.85rem;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      line-height: 1.5;
+      color: #2A2018;
+      text-shadow: var(--ts-lift);
+    }
+    .trust-item strong {
+      display: block;
+      font-family: var(--serif);
+      font-size: 1.15rem;
+      font-weight: 400;
+      letter-spacing: 0.04em;
+      color: #1A1410;
+      margin-bottom: 0.25rem;
+      text-transform: none;
+      text-shadow: var(--ts-lift);
+    }
+
+    /* WHY IT MATTERS */
+    #why {
+      background: transparent;
+      padding: clamp(4rem, 8vw, 7rem) var(--gutter);
+    }
+    .why-inner { position: relative; z-index: 1; }
+    .why-inner {
+      max-width: 680px;
+      margin: 0 auto;
+      background: rgba(255, 252, 248, 0.42);
+      backdrop-filter: blur(4px);
+      -webkit-backdrop-filter: blur(4px);
+      border: 1px solid rgba(184, 140, 48, 0.06);
+      padding: 3.5rem;
+    }
+    .why-inner .eyebrow {
+      text-align: center;
+      color: var(--bronze);
+    }
+    .why-inner h2 {
+      text-align: center;
+      font-family: var(--serif);
+      font-size: clamp(1.8rem, 3.5vw, 2.6rem);
+      font-weight: 300;
+      line-height: 1.2;
+      margin-bottom: 2rem;
+      color: var(--charcoal-dk);
+      text-shadow: var(--ts-lift);
+    }
+    .why-inner p {
+      font-size: 1.05rem;
+      line-height: 1.85;
+      color: var(--mid-text);
+      margin-bottom: 1.5rem;
+      text-shadow: var(--ts-lift);
+    }
+    .why-inner p:last-of-type {
+      margin-bottom: 2.5rem;
+    }
+    .why-cta {
+      text-align: center;
+    }
+
+    /* TESTIMONIALS */
+    #testimonials {
+      background: transparent;
+      padding: clamp(4rem, 8vw, 7rem) var(--gutter);
+    }
+    .testimonials-inner { position: relative; z-index: 1; }
+    .testimonials-inner {
+      max-width: var(--max);
+      margin: 0 auto;
+    }
+    .testimonials-inner .eyebrow,
+    .testimonials-inner h2 {
+      text-align: center;
+    }
+    .testimonials-inner .eyebrow { color: var(--bronze); }
+    .testimonials-inner h2 {
+      font-family: var(--serif);
+      font-size: clamp(1.8rem, 3.5vw, 2.6rem);
+      font-weight: 300;
+      line-height: 1.2;
+      margin-bottom: 3rem;
+      color: var(--charcoal-dk);
+      text-shadow: var(--ts-lift);
+    }
+    .testimonials-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 2rem;
+    }
+    .testimonial-card {
+      background: rgba(255, 252, 248, 0.40);
+      backdrop-filter: blur(4px);
+      padding: 2.5rem 2rem;
+      border-top: 2px solid rgba(184,140,48,0.20);
+    }
+    .testimonial-card blockquote {
+      font-family: var(--serif);
+      font-size: 1.1rem;
+      font-style: italic;
+      font-weight: 300;
+      line-height: 1.7;
+      color: var(--charcoal-dk);
+      margin-bottom: 1.5rem;
+      border: none;
+      padding: 0;
+      background: none;
+    }
+    .testimonial-card blockquote::before {
+      content: none;
+    }
+    .testimonial-attr {
+      font-family: var(--sans);
+      font-size: 0.8rem;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+      color: var(--mid-text);
+    }
+    .testimonial-attr strong {
+      display: block;
+      font-weight: 500;
+      margin-bottom: 0.15rem;
+      text-transform: none;
+      letter-spacing: 0.02em;
+    }
+
+    /* CUSTOM ART NOTE */
+    .specialty-note {
+      max-width: 680px;
+      margin: 3rem auto 0;
+      text-align: center;
+      font-size: 0.95rem;
+      font-weight: 400;
+      line-height: 1.75;
+      color: #2A1E16;
+      font-style: italic;
+      text-shadow: var(--ts-lift);
+      background: rgba(255, 252, 248, 0.40);
+      backdrop-filter: blur(4px);
+      -webkit-backdrop-filter: blur(4px);
+      border: 1px solid rgba(184, 140, 48, 0.06);
+      padding: 2rem 2.5rem;
+    }
+
+    /* FAQ */
+    #faq {
+      background: transparent;
+      padding: clamp(4rem, 8vw, 7rem) var(--gutter);
+    }
+    .faq-inner { position: relative; z-index: 1; }
+    .faq-inner {
+      max-width: 720px;
+      margin: 0 auto;
+      background: rgba(255,252,248,0.42);
+      backdrop-filter: blur(4px);
+      -webkit-backdrop-filter: blur(4px);
+      border: 1px solid rgba(184,140,48,0.06);
+      padding: 3.5rem;
+    }
+    .faq-inner .eyebrow,
+    .faq-inner h2 {
+      text-align: center;
+    }
+    .faq-inner .eyebrow { color: var(--bronze); }
+    .faq-inner h2 {
+      font-family: var(--serif);
+      font-size: clamp(1.8rem, 3.5vw, 2.6rem);
+      font-weight: 300;
+      line-height: 1.2;
+      margin-bottom: 2.5rem;
+      color: var(--charcoal-dk);
+      text-shadow: var(--ts-lift);
+    }
+    .faq-item {
+      border-bottom: 1px solid var(--stone);
+    }
+    .faq-item summary {
+      font-family: var(--serif);
+      font-size: 1.15rem;
+      font-weight: 400;
+      color: var(--charcoal-dk);
+      text-shadow: var(--ts-lift);
+      cursor: pointer;
+      padding: 1.25rem 0;
+      list-style: none;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+    .faq-item summary::-webkit-details-marker { display: none; }
+    .faq-item summary::after {
+      content: '+';
+      font-family: var(--sans);
+      font-size: 1.3rem;
+      font-weight: 300;
+      color: var(--bronze-lt);
+      transition: transform 0.3s ease;
+    }
+    .faq-item[open] summary::after {
+      content: '−';
+    }
+    .faq-item .faq-answer {
+      padding: 0 0 1.5rem;
+      font-size: 0.95rem;
+      line-height: 1.8;
+      color: var(--mid-text);
+      text-shadow: var(--ts-lift);
+    }
+
+    /* CONTACT EXPECTATIONS */
+    .contact-expect {
+      max-width: 520px;
+      margin: 0 auto 2.5rem;
+      text-align: left;
+      list-style: none;
+      padding: 0;
+    }
+    .contact-expect li {
+      font-size: 0.95rem;
+      line-height: 1.75;
+      color: var(--mid-text);
+      padding: 0.35rem 0;
+      padding-left: 1.5rem;
+      position: relative;
+      text-shadow: var(--ts-lift);
+    }
+    .contact-expect li::before {
+      content: attr(data-step);
+      position: absolute;
+      left: 0;
+      color: var(--bronze);
+      font-weight: 500;
+    }
+
+    @media (max-width: 768px) {
+      .trust-strip-inner {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 1.5rem 1rem;
+      }
+      .testimonials-grid {
+        grid-template-columns: 1fr;
+        gap: 1.5rem;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- FIXED TEXTURE WALL — one cover-scaled image behind the entire page,
+       never tiles, never resets, hairline section gaps are invisible because
+       they reveal the same fixed surface behind them -->
+  <div class="texture-bg" aria-hidden="true"></div>
+
+  <!-- NAV -->
+  <nav>
+    <div class="nav-inner">
+      <a class="wordmark" href="#hero">Breanna Malone</a>
+      <ul class="nav-links">
+        <li><a href="#about">About</a></li>
+        <li><a href="#services">Services</a></li>
+        <li><a href="#portfolio">Portfolio</a></li>
+        <li><a href="#fine-art">Fine Art</a></li>
+        <li><a href="#testimonials">Testimonials</a></li>
+        <li><a href="#contact" class="nav-cta">Request a Consultation</a></li>
+      </ul>
+      <button class="nav-toggle" aria-label="Open menu">&#9776;</button>
+    </div>
+  </nav>
+
+  <!-- HERO -->
+  <section id="hero">
+    <div class="hero-inner">
+      <span class="hero-rule"></span>
+      <p class="eyebrow">Fine Art &nbsp;·&nbsp; Decorative Surfaces &nbsp;·&nbsp; Private Commissions</p>
+      <h1>Art that transforms<br /><em>the space it lives in.</em></h1>
+      <p class="hero-sub">Original paintings, decorative finishes, and private commissions — conceived and executed by a fine artist, entirely by hand.</p>
+      <p class="hero-availability">Accepting select commissions &nbsp;·&nbsp; Based in West Palm Beach, FL &nbsp;·&nbsp; Serving all of South Florida</p>
+      <div class="hero-actions">
+        <a href="#contact" class="btn-primary">Begin a Conversation</a>
+        <a href="#portfolio" class="btn-outline">View Portfolio</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- MARQUEE -->
+  <div class="marquee-wrap" aria-hidden="true">
+    <div class="marquee-track">
+      <span>Original Paintings &nbsp;·&nbsp; </span><span class="m-accent">Venetian Plaster &nbsp;·&nbsp; </span><span>Private Commissions &nbsp;·&nbsp; </span><span class="m-accent">Limewash &nbsp;·&nbsp; </span><span>Custom Murals &nbsp;·&nbsp; </span><span class="m-accent">Faux Finishes &nbsp;·&nbsp; </span><span>Decorative Surfaces &nbsp;·&nbsp; </span><span class="m-accent">South Florida &nbsp;·&nbsp; </span>
+      <span>Original Paintings &nbsp;·&nbsp; </span><span class="m-accent">Venetian Plaster &nbsp;·&nbsp; </span><span>Private Commissions &nbsp;·&nbsp; </span><span class="m-accent">Limewash &nbsp;·&nbsp; </span><span>Custom Murals &nbsp;·&nbsp; </span><span class="m-accent">Faux Finishes &nbsp;·&nbsp; </span><span>Decorative Surfaces &nbsp;·&nbsp; </span><span class="m-accent">South Florida &nbsp;·&nbsp; </span>
+    </div>
+  </div>
+
+  <!-- TRUST STRIP -->
+  <div class="trust-strip">
+    <div class="trust-strip-inner">
+      <div class="trust-item">
+        <strong>Fine Art Trained</strong>
+        15+ Years in Practice
+      </div>
+      <div class="trust-item">
+        <strong>Based in West Palm Beach</strong>
+        Serving South Florida
+      </div>
+      <div class="trust-item">
+        <strong>Residential · Commercial · Hospitality</strong>
+        Select Commissions
+      </div>
+      <div class="trust-item">
+        <strong>Paintings · Surfaces · Murals</strong>
+        Every Medium, by Hand
+      </div>
+    </div>
+  </div>
+
+  <!-- ABOUT — limewash background -->
+  <section id="about">
+    <div class="about-inner">
+
+      <div class="about-photo-wrap">
+        <img src="photo-breanna-park.jpg" alt="Breanna Malone — fine artist and decorative surface specialist, West Palm Beach FL" />
+        <div class="about-photo-frame"></div>
+      </div>
+
+      <div class="about-text">
+        <p class="eyebrow">About Breanna</p>
+        <h2>A painter's eye.<br />An artisan's hand.</h2>
+        <p>I am a fine artist who works across canvas, walls, and surfaces. Whether it is an original painting, a hand-applied decorative finish, or a custom mural — every piece starts with the same foundation: a trained eye for color, light, and composition.</p>
+        <p>I work directly with homeowners, interior designers, and architects throughout South Florida. The relationship is collaborative — I am personally on-site for every project, from first conversation through the final detail.</p>
+        <div class="about-tags">
+          <span>Fine Art</span>
+          <span>Private Commissions</span>
+          <span>Luxury Residential</span>
+          <span>Hospitality</span>
+          <span>Interior Designers</span>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- SERVICES — espresso dark concrete -->
+  <section id="services">
+    <div class="services-inner">
+      <div class="services-header">
+        <p class="eyebrow">What I Do</p>
+        <h2>Paintings, surfaces, and everything in between.</h2>
+        <p>Every project is custom. Below are examples of what I offer — if you have something in mind that is not listed, reach out. I love a creative challenge.</p>
+      </div>
+      <div class="services-grid">
+
+        <div class="service-card">
+          <span class="service-num">01</span>
+          <h3>Original Paintings</h3>
+          <p>Oil on canvas, panel, or wall — botanicals, landscapes, portraits, abstracts, and anything in between. Commissioned pieces created specifically for your space.</p>
+        </div>
+
+        <div class="service-card">
+          <span class="service-num">02</span>
+          <h3>Decorative Finishes</h3>
+          <p>Venetian plaster, limewash, faux brick and stone, aged patinas, and more. Hand-applied finishes that give walls texture, depth, and character.</p>
+        </div>
+
+        <div class="service-card">
+          <span class="service-num">03</span>
+          <h3>Murals &amp; Custom Work</h3>
+          <p>Large-scale painted murals, trompe l'oeil, and one-of-a-kind installations. Designed for your architecture and painted entirely by hand.</p>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- WHY IT MATTERS -->
+  <section id="why">
+    <div class="why-inner">
+      <p class="eyebrow">Why It Matters</p>
+      <h2>The details people remember.</h2>
+      <p>The most admired spaces have one thing in common — someone paid attention to the details. A hand-applied finish or an original painting changes how a room feels. It is the thing guests notice, photographers capture, and time only makes better.</p>
+      <div class="why-cta">
+        <a href="#contact" class="btn-primary">Start a Conversation</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- PORTFOLIO — carousel -->
+  <section id="portfolio">
+    <div class="portfolio-inner">
+      <div class="portfolio-header">
+        <p class="eyebrow">Portfolio</p>
+        <h2>The work speaks.</h2>
+        <p>A selection of residential and hospitality projects throughout Palm Beach County and South Florida.</p>
+      </div>
+      <div class="carousel-wrap">
+        <div class="carousel-track">
+          <div class="carousel-slide">
+            <img src="photo-brick-process.jpg" alt="Faux aged brick and stone finish" loading="lazy" />
+          </div>
+          <div class="carousel-slide">
+            <img src="photo-loggia.png" alt="Faux stone loggia with Mediterranean columns" loading="lazy" />
+          </div>
+          <div class="carousel-slide">
+            <img src="photo-aged-brick.png" alt="Aged faux brick interior finish" loading="lazy" />
+          </div>
+          <div class="carousel-slide">
+            <img src="faux-brick-lounge.jpg" alt="Faux brick lounge with arched windows" loading="lazy" />
+          </div>
+          <div class="carousel-slide">
+            <img src="faux-brick-lounge-2.jpg" alt="Faux brick interior detail" loading="lazy" />
+          </div>
+        </div>
+        <button class="carousel-btn carousel-btn-prev" aria-label="Previous slide">&lsaquo;</button>
+        <button class="carousel-btn carousel-btn-next" aria-label="Next slide">&rsaquo;</button>
+      </div>
+    </div>
+  </section>
+
+  <!-- FINE ART — carousel -->
+  <section id="fine-art">
+    <div class="portfolio-inner">
+      <div class="portfolio-header">
+        <p class="eyebrow">Fine Art</p>
+        <h2>Original paintings &amp; commissions.</h2>
+        <p>Works on canvas, panel, and wall — tropical botanicals, landscapes, and abstract compositions.</p>
+      </div>
+      <div class="carousel-wrap">
+        <div class="carousel-track">
+          <div class="carousel-slide">
+            <img src="fine-art-orchids.png" alt="Orchids — oil painting by Breanna Malone" loading="lazy" />
+          </div>
+          <div class="carousel-slide">
+            <img src="fine-art-calla-lily.png" alt="Calla Lily — oil painting by Breanna Malone" loading="lazy" />
+          </div>
+          <div class="carousel-slide">
+            <img src="fine-art-bird-of-paradise.jpg" alt="Bird of Paradise — oil painting by Breanna Malone" loading="lazy" />
+          </div>
+          <div class="carousel-slide">
+            <img src="fine-art-magnolia.jpg" alt="Magnolia — oil painting by Breanna Malone" loading="lazy" />
+          </div>
+          <div class="carousel-slide">
+            <img src="fine-art-heron.jpeg" alt="Blue Heron — oil painting by Breanna Malone" loading="lazy" />
+          </div>
+          <div class="carousel-slide">
+            <img src="fine-art-sunset-sailboat.jpeg" alt="Sunset Harbor — oil painting by Breanna Malone" loading="lazy" />
+          </div>
+          <div class="carousel-slide">
+            <img src="fine-art-swimmer.jpeg" alt="The Swimmer — oil painting by Breanna Malone" loading="lazy" />
+          </div>
+          <div class="carousel-slide">
+            <img src="fine-art-anemones.jpeg" alt="Anemones in Vase — oil painting by Breanna Malone" loading="lazy" />
+          </div>
+          <div class="carousel-slide">
+            <img src="fine-art-bridle.png" alt="Bridle Study — oil painting by Breanna Malone" loading="lazy" />
+          </div>
+          <div class="carousel-slide">
+            <img src="fine-art-pet-portrait-2.jpeg" alt="Pet Portrait — oil painting commission by Breanna Malone" loading="lazy" />
+          </div>
+          <div class="carousel-slide">
+            <img src="fine-art-sleeping-cat.jpeg" alt="Sleeping Cat — oil painting commission by Breanna Malone" loading="lazy" />
+          </div>
+          <div class="carousel-slide">
+            <img src="fine-art-cafe.jpg" alt="L'Espresso — oil painting by Breanna Malone" loading="lazy" />
+          </div>
+          <div class="carousel-slide">
+            <img src="fine-art-renoir-study.jpeg" alt="Renoir Master Study — Anemones by Breanna Malone" loading="lazy" />
+          </div>
+          <div class="carousel-slide">
+            <img src="fine-art-lily-ink.jpeg" alt="Lily — ink drawing by Breanna Malone" loading="lazy" />
+          </div>
+        </div>
+        <button class="carousel-btn carousel-btn-prev" aria-label="Previous slide">&lsaquo;</button>
+        <button class="carousel-btn carousel-btn-next" aria-label="Next slide">&rsaquo;</button>
+      </div>
+    </div>
+  </section>
+
+  <!-- TESTIMONIALS -->
+  <section id="testimonials">
+    <div class="testimonials-inner">
+      <p class="eyebrow">Client Voices</p>
+      <h2>What designers and homeowners say.</h2>
+      <div class="testimonials-grid">
+
+        <div class="testimonial-card">
+          <blockquote>"Breanna is our first call for any project where the finish needs to be extraordinary. She understands design intent — and she makes us look good. Our clients always ask who did the work."</blockquote>
+          <div class="testimonial-attr">
+            <strong>Interior Design Studio</strong>
+            South Florida
+          </div>
+        </div>
+
+        <div class="testimonial-card">
+          <blockquote>"We never thought about what the walls could do until Breanna showed us. The way the plaster catches the evening light — it is the room everyone gravitates to."</blockquote>
+          <div class="testimonial-attr">
+            <strong>Private Homeowner</strong>
+            South Florida
+          </div>
+        </div>
+
+        <div class="testimonial-card">
+          <blockquote>"Our guests consistently mention the atmosphere in the lobby. Breanna's work is a significant part of that. It looks better now than the day it was finished."</blockquote>
+          <div class="testimonial-attr">
+            <strong>Hospitality Developer</strong>
+            South Florida
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- SPECIALTY — dark brick, secondary focus -->
+  <section id="specialty">
+    <div class="specialty-inner">
+      <div class="specialty-header">
+        <p class="eyebrow">Private Commissions</p>
+        <h2>Something made for your space alone.</h2>
+        <p>Whether it is a painting, a mural, or a surface finish — every commission is a collaboration. Tell me your vision, and I will bring it to life.</p>
+      </div>
+      <div class="specialty-grid">
+
+        <div class="specialty-card">
+          <h3>For Your Home</h3>
+          <p>Original artwork and custom finishes designed around your space, your style, and your life. From a single statement piece to a full interior transformation.</p>
+        </div>
+
+        <div class="specialty-card">
+          <h3>For Designers &amp; Architects</h3>
+          <p>A collaborative partner for your projects. I work from your vision, attend site meetings, and deliver finishes and artwork that elevate the design.</p>
+        </div>
+
+        <div class="specialty-card">
+          <h3>For Commercial &amp; Hospitality</h3>
+          <p>Lobby installations, restaurant murals, boutique interiors — original work that gives your space an identity guests remember.</p>
+        </div>
+
+      </div>
+      <p class="specialty-note">Commissions are accepted on a selective basis. Inquire for current availability.</p>
+    </div>
+  </section>
+
+  <!-- DIVIDER -->
+  <div class="stone-divider" aria-hidden="true">
+    <div class="divider-line"></div>
+    <svg width="32" height="32" viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg">
+      <rect x="8" y="8" width="16" height="16" stroke="#B88C30" stroke-width="0.8" fill="none" opacity="0.7" transform="rotate(45 16 16)"/>
+      <circle cx="16" cy="16" r="2" fill="#B85C38" opacity="0.7"/>
+    </svg>
+    <div class="divider-line"></div>
+  </div>
+
+  <!-- PROCESS — trowel marks -->
+  <section id="process">
+    <div class="process-inner">
+      <p class="eyebrow center">The Process</p>
+      <h2 class="center">From first conversation to final detail.</h2>
+      <div class="process-steps">
+
+        <div class="process-step">
+          <span class="step-num">01</span>
+          <h3>Conversation</h3>
+          <p>We discuss your vision, your space, and what you are looking for. No obligation — just a genuine conversation about what is possible.</p>
+        </div>
+
+        <div class="process-step">
+          <span class="step-num">02</span>
+          <h3>Proposal</h3>
+          <p>I put together a detailed plan with samples, sketches, or references — so you can see the direction before we begin.</p>
+        </div>
+
+        <div class="process-step">
+          <span class="step-num">03</span>
+          <h3>Creation</h3>
+          <p>Every piece is made by hand, by me. I am personally on-site or in-studio for the entire process.</p>
+        </div>
+
+        <div class="process-step">
+          <span class="step-num">04</span>
+          <h3>Delivery</h3>
+          <p>A final walkthrough to make sure every detail is right. The relationship does not end when the work is done.</p>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- QUOTE — white marble -->
+  <section id="quote">
+    <blockquote>
+      The best spaces have something in them<br />
+      <em>that was made by hand.</em>
+      <span class="quote-attr">— Breanna Malone</span>
+    </blockquote>
+  </section>
+
+  <!-- FAQ -->
+  <section id="faq">
+    <div class="faq-inner">
+      <p class="eyebrow">Common Questions</p>
+      <h2>Before you reach out.</h2>
+
+      <details class="faq-item">
+        <summary>How do I know what is right for my space?</summary>
+        <div class="faq-answer">
+          <p>That is what the initial consultation is for — and it is complimentary. We will talk through your vision, look at your space, and I will recommend options that fit. No obligation.</p>
+        </div>
+      </details>
+
+      <details class="faq-item">
+        <summary>Do you work with designers and architects?</summary>
+        <div class="faq-answer">
+          <p>Absolutely. A large portion of my work is collaborative — I attend site meetings, work from your specs and mood boards, and coordinate with your timeline. <a href="#contact" style="color:var(--bronze);text-decoration:underline;">Let's connect.</a></p>
+        </div>
+      </details>
+
+      <details class="faq-item">
+        <summary>What does a project typically cost?</summary>
+        <div class="faq-answer">
+          <p>Every project is custom, so pricing varies. I provide a detailed proposal after our initial conversation — no obligation, no pressure.</p>
+        </div>
+      </details>
+
+      <details class="faq-item">
+        <summary>How far in advance should I book?</summary>
+        <div class="faq-answer">
+          <p>I take on a limited number of projects to give each one my full attention. The earlier we connect, the more flexibility we have. <a href="#contact" style="color:var(--bronze);text-decoration:underline;">Check current availability.</a></p>
+        </div>
+      </details>
+
+    </div>
+  </section>
+
+  <!-- CONTACT — travertine -->
+  <section id="contact">
+    <div class="contact-inner">
+      <p class="eyebrow center">Let's Work Together</p>
+      <h2 class="center">Begin a collaboration.</h2>
+      <p class="contact-sub center">Tell me about your vision — here is what happens next:</p>
+      <ol class="contact-expect">
+        <li data-step="1.">I will respond within 24 hours.</li>
+        <li data-step="2.">We arrange an on-site visit or studio consultation.</li>
+        <li data-step="3.">I prepare a detailed proposal with samples — tailored to your project.</li>
+      </ol>
+      <form class="contact-form" name="contact" method="POST" data-netlify="true">
+        <input type="hidden" name="form-name" value="contact" />
+        <div class="form-row">
+          <input type="text" name="name" placeholder="Your Name" required />
+          <input type="email" name="email" placeholder="Email Address" required />
+        </div>
+        <div class="form-row">
+          <input type="text" name="phone" placeholder="Phone (optional)" />
+          <input type="text" name="project-type" placeholder="What are you looking for? (painting, surface finish, mural, not sure yet…)" />
+        </div>
+        <textarea name="message" rows="5" placeholder="Tell me a bit about your project — the space, any inspiration, and what you have in mind..." required></textarea>
+        <button type="submit" class="btn-primary">Begin the Conversation</button>
+      </form>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer>
+    <div class="footer-inner">
+      <p class="wordmark">Breanna Malone</p>
+      <p class="footer-sub">Fine Art &amp; Decorative Surfaces &nbsp;·&nbsp; West Palm Beach, Florida &nbsp;·&nbsp; Serving South Florida</p>
+      <p class="footer-copy">&copy; <span id="year"></span> Breanna Malone. All rights reserved.</p>
+    </div>
+  </footer>
+
+  <script>
+    document.getElementById('year').textContent = new Date().getFullYear();
+
+    const toggle = document.querySelector('.nav-toggle');
+    const navLinks = document.querySelector('.nav-links');
+    toggle.addEventListener('click', () => navLinks.classList.toggle('open'));
+    document.querySelectorAll('.nav-links a').forEach(link => {
+      link.addEventListener('click', () => navLinks.classList.remove('open'));
+    });
+
+    const sections = document.querySelectorAll('section[id]');
+    const observer = new IntersectionObserver(entries => {
+      entries.forEach(e => {
+        if (e.isIntersecting) {
+          document.querySelectorAll('.nav-links a').forEach(a => {
+            a.classList.toggle('active', a.getAttribute('href') === '#' + e.target.id);
+          });
+        }
+      });
+    }, { threshold: 0.3 });
+    sections.forEach(s => observer.observe(s));
+
+    // Carousel arrow buttons
+    document.querySelectorAll('.carousel-wrap').forEach(wrap => {
+      const track = wrap.querySelector('.carousel-track');
+      const prevBtn = wrap.querySelector('.carousel-btn-prev');
+      const nextBtn = wrap.querySelector('.carousel-btn-next');
+      const scrollAmount = () => track.querySelector('.carousel-slide').offsetWidth + 20; // slide width + gap
+      prevBtn.addEventListener('click', () => track.scrollBy({ left: -scrollAmount(), behavior: 'smooth' }));
+      nextBtn.addEventListener('click', () => track.scrollBy({ left: scrollAmount(), behavior: 'smooth' }));
+    });
+  </script>
+
+</body>
+</html>
