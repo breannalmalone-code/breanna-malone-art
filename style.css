@@ -209,7 +209,7 @@ nav {
 /* ---- ALL CONTENT SECTIONS — fully transparent, zero breaks ----
    display:flow-root contains floats + prevents margin collapse
    WITHOUT creating a compositing boundary (unlike overflow:hidden) */
-#about, #services, #portfolio, #fine-art, #specialty,
+#about, #services, #portfolio, #original-art, #specialty,
 #process, #quote, #contact {
   padding: 8rem var(--gutter);
   position: relative;
@@ -345,7 +345,7 @@ nav {
 .portfolio-header h2 { color: #1A1410; font-weight: 500; text-shadow: var(--ts-lift); }
 .portfolio-header p { color: #2A1E16; font-weight: 400; text-shadow: var(--ts-lift); }
 #portfolio .eyebrow { color: var(--bronze); }
-/* ---- CAROUSEL (shared by Portfolio & Fine Art) ---- */
+/* ---- CAROUSEL (shared by Portfolio & Original Art) ---- */
 .carousel-wrap { position: relative; }
 .carousel-track {
   display: flex;
@@ -439,7 +439,7 @@ nav {
 .carousel-btn-prev { left: 0.75rem; }
 .carousel-btn-next { right: 0.75rem; }
 
-/* Placeholder slides for Fine Art coming-soon */
+/* Placeholder slides for Original Art coming-soon */
 .carousel-placeholder {
   background: rgba(255,252,248,0.25) !important;
   border: 6px dashed rgba(184,140,48,0.18) !important;
@@ -461,7 +461,7 @@ nav {
   text-shadow: var(--ts-gold);
 }
 
-#fine-art .eyebrow { color: var(--bronze); }
+#original-art .eyebrow { color: var(--bronze); }
 
 /* ---- SPECIALTY ---- */
 .specialty-inner { max-width: var(--max); margin: 0 auto; position: relative; z-index: 1; }
