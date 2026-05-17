@@ -475,6 +475,19 @@
       </div>
       <div class="carousel-wrap">
         <div class="carousel-track">
+          <div class="carousel-slide carousel-slide-video">
+            <video
+              poster="timelapse-brick-poster.jpg"
+              preload="metadata"
+              playsinline
+              muted
+              loop
+              autoplay
+              aria-label="Timelapse of Breanna hand-painting a faux brick finish on a wall"
+            >
+              <source src="timelapse-brick.mp4" type="video/mp4" />
+            </video>
+          </div>
           <div class="carousel-slide">
             <img src="photo-brick-process.jpg" alt="Faux aged brick and stone finish" loading="lazy" />
           </div>
@@ -785,6 +798,15 @@
       const scrollAmount = () => track.querySelector('.carousel-slide').offsetWidth + 20; // slide width + gap
       prevBtn.addEventListener('click', () => track.scrollBy({ left: -scrollAmount(), behavior: 'smooth' }));
       nextBtn.addEventListener('click', () => track.scrollBy({ left: scrollAmount(), behavior: 'smooth' }));
+    });
+
+    // Pause autoplay videos when off-screen — saves mobile battery + data
+    document.querySelectorAll('video[autoplay]').forEach(v => {
+      const io = new IntersectionObserver(([entry]) => {
+        if (entry.isIntersecting) v.play().catch(() => {});
+        else v.pause();
+      }, { threshold: 0.5 });
+      io.observe(v);
     });
   </script>
 

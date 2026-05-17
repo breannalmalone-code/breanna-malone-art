@@ -440,6 +440,22 @@ nav {
   object-fit: contain;
 }
 .carousel-slide:hover img { transform: scale(1.02); }
+.carousel-slide-video { background: #1A1410; }
+.carousel-slide video {
+  display: block;
+  max-width: 100%;
+  max-height: 520px;
+  width: auto;
+  height: auto;
+  object-fit: contain;
+}
+@media (prefers-reduced-motion: reduce) {
+  .carousel-slide video { display: none; }
+  .carousel-slide-video {
+    background: #1A1410 url('timelapse-brick-poster.jpg') center / contain no-repeat;
+    min-height: 520px; min-width: 290px;
+  }
+}
 
 /* Carousel arrows */
 .carousel-btn {
