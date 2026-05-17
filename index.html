@@ -803,14 +803,37 @@
       stickyCta.classList.toggle('visible', pastHero && !nearContact);
     }, { passive: true });
 
-    // Carousel arrow buttons
+    // Carousel arrow buttons — slide-aware (handles variable widths) and looping.
+    // Finds the slide currently centered in the track, advances to the next/prev
+    // by index, and wraps around at the ends so the carousel never stalls.
     document.querySelectorAll('.carousel-wrap').forEach(wrap => {
       const track = wrap.querySelector('.carousel-track');
       const prevBtn = wrap.querySelector('.carousel-btn-prev');
       const nextBtn = wrap.querySelector('.carousel-btn-next');
-      const scrollAmount = () => track.querySelector('.carousel-slide').offsetWidth + 20; // slide width + gap
-      prevBtn.addEventListener('click', () => track.scrollBy({ left: -scrollAmount(), behavior: 'smooth' }));
-      nextBtn.addEventListener('click', () => track.scrollBy({ left: scrollAmount(), behavior: 'smooth' }));
+
+      const slides = () => Array.from(track.querySelectorAll('.carousel-slide'));
+
+      const currentIndex = () => {
+        const center = track.scrollLeft + track.clientWidth / 2;
+        let best = 0, bestDist = Infinity;
+        slides().forEach((s, i) => {
+          const slideCenter = s.offsetLeft + s.offsetWidth / 2;
+          const d = Math.abs(slideCenter - center);
+          if (d < bestDist) { bestDist = d; best = i; }
+        });
+        return best;
+      };
+
+      const goTo = i => {
+        const all = slides();
+        const n = all.length;
+        if (!n) return;
+        const wrapped = ((i % n) + n) % n;
+        all[wrapped].scrollIntoView({ inline: 'center', block: 'nearest', behavior: 'smooth' });
+      };
+
+      prevBtn.addEventListener('click', () => goTo(currentIndex() - 1));
+      nextBtn.addEventListener('click', () => goTo(currentIndex() + 1));
     });
 
     // Pause autoplay videos when off-screen — saves mobile battery + data.
