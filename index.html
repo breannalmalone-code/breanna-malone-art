@@ -520,6 +520,19 @@
       </div>
       <div class="carousel-wrap">
         <div class="carousel-track">
+          <div class="carousel-slide carousel-slide-video">
+            <video
+              poster="timelapse-atelier-poster.jpg"
+              preload="metadata"
+              playsinline
+              muted
+              loop
+              autoplay
+              aria-label="Timelapse of Breanna at her easel painting a Mediterranean flower-shop facade"
+            >
+              <source src="timelapse-atelier.mp4" type="video/mp4" />
+            </video>
+          </div>
           <div class="carousel-slide">
             <img src="fine-art-orchids.png" alt="Orchids — oil painting by Breanna Malone" loading="lazy" />
           </div>
@@ -800,12 +813,15 @@
       nextBtn.addEventListener('click', () => track.scrollBy({ left: scrollAmount(), behavior: 'smooth' }));
     });
 
-    // Pause autoplay videos when off-screen — saves mobile battery + data
+    // Pause autoplay videos when off-screen — saves mobile battery + data.
+    // Threshold 0.7 (not 0.5) ensures only the dominant video plays when
+    // multiple are on the page, preventing simultaneous decode at section
+    // boundaries — which would thermal-throttle mobile.
     document.querySelectorAll('video[autoplay]').forEach(v => {
       const io = new IntersectionObserver(([entry]) => {
         if (entry.isIntersecting) v.play().catch(() => {});
         else v.pause();
-      }, { threshold: 0.5 });
+      }, { threshold: 0.7 });
       io.observe(v);
     });
   </script>
