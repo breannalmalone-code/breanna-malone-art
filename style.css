@@ -225,9 +225,9 @@ nav {
   max-width: var(--max);
   margin: 0 auto;
   display: grid;
-  grid-template-columns: 340px 1fr;
-  gap: 4rem;
-  align-items: start;
+  grid-template-columns: minmax(0, 720px) 1fr;
+  gap: 4rem 5rem;
+  align-items: center;
   position: relative;
   z-index: 1;
   background: rgba(255, 252, 248, 0.45);
@@ -297,13 +297,15 @@ nav {
   border: 1px solid rgba(184,140,48,0.12);
   pointer-events: none;
 }
-/* Paired-portrait stack: framed headshot above, framed studio timelapse below */
+/* Paired-portrait diptych: framed headshot and framed studio timelapse,
+   side-by-side on desktop, stacked on mobile. Caption spans the full row. */
 .about-media-stack {
-  display: flex;
-  flex-direction: column;
-  gap: 1.5rem;
-  align-items: stretch;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1.5rem 1.25rem;
+  align-items: start;
 }
+.about-media-stack .about-video-caption { grid-column: 1 / -1; }
 .about-video-wrap video {
   width: 100%;
   aspect-ratio: 3 / 4;
@@ -621,6 +623,18 @@ nav {
 .contact-sub { color: #2A2018; max-width: 540px; margin: 0 auto 3rem; font-size: 1.05rem; line-height: 1.8; text-shadow: var(--ts-lift); }
 .contact-form { display: flex; flex-direction: column; gap: 1rem; }
 .form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; }
+.form-success {
+  font-family: var(--serif);
+  font-size: 1.15rem;
+  font-weight: 400;
+  color: var(--cream);
+  background: rgba(184,140,48,0.10);
+  border: 1px solid rgba(184,140,48,0.30);
+  padding: 2rem 2.5rem;
+  text-align: center;
+  line-height: 1.5;
+  margin: 0;
+}
 .contact-form input,
 .contact-form select,
 .contact-form textarea {
@@ -694,7 +708,7 @@ footer { background: var(--charcoal-dk); padding: 3.5rem var(--gutter); border-t
 @media (max-width: 960px) {
   .about-inner { grid-template-columns: 1fr; gap: 3rem; }
   .about-photo-wrap { max-width: 340px; }
-  .about-media-stack { max-width: 340px; margin: 0 auto; }
+  .about-media-stack { max-width: 340px; margin: 0 auto; grid-template-columns: 1fr; }
   .services-grid { grid-template-columns: repeat(2, 1fr); }
   .specialty-grid { grid-template-columns: 1fr; }
   .carousel-slide { max-width: 90%; }
