@@ -335,15 +335,18 @@
         <form class="contact-form hero-form" name="contact" method="POST" data-netlify="true">
           <input type="hidden" name="form-name" value="contact" />
           <input type="hidden" name="form-source" value="hero" />
+          <input type="text"  name="name"  placeholder="Name"            required aria-label="Name" autocomplete="name" />
+          <input type="email" name="email" placeholder="Email"           required aria-label="Email" inputmode="email" autocomplete="email" />
+          <input type="tel"   name="phone" placeholder="Phone"            required aria-label="Phone" inputmode="tel" autocomplete="tel" />
           <select name="project-type" required aria-label="What you have in mind">
             <option value="" disabled selected>What you have in mind</option>
             <option value="painting">Original Painting or Commission</option>
             <option value="decorative-finish">Decorative Wall Finish</option>
             <option value="mural">Mural or Large-Scale Work</option>
-            <option value="multiple">A combination</option>
+            <option value="multiple">Multiple projects</option>
             <option value="not-sure">Still exploring</option>
           </select>
-          <select name="budget-range" aria-label="Investment range">
+          <select name="budget-range" required aria-label="Investment range">
             <option value="" disabled selected>Investment range</option>
             <option value="under-5k">Under $5,000</option>
             <option value="5-15k">$5,000 – $15,000</option>
@@ -351,9 +354,7 @@
             <option value="50k-plus">$50,000+</option>
             <option value="not-sure">Not sure yet</option>
           </select>
-          <input type="text"  name="name"  placeholder="Name"            required aria-label="Name" />
-          <input type="email" name="email" placeholder="Email"           required aria-label="Email" inputmode="email" autocomplete="email" />
-          <input type="tel"   name="phone" placeholder="Phone (optional)"          aria-label="Phone" inputmode="tel" autocomplete="tel" />
+          <textarea name="message" rows="3" placeholder="Additional notes (optional) — the space, inspiration, or anything you'd like to share." aria-label="Additional notes"></textarea>
           <button type="submit" class="btn-primary">Let's Talk</button>
         </form>
       </div>
