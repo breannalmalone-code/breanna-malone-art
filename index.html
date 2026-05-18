@@ -339,6 +339,45 @@
     </div>
   </div>
 
+  <!-- QUICK INTAKE — compact form right after the hero so leads convert without scrolling -->
+  <section id="quick-intake" class="quick-intake">
+    <div class="quick-intake-inner">
+      <div class="quick-intake-copy">
+        <p class="eyebrow">Start a Conversation</p>
+        <h2>Tell me about your project.</h2>
+        <p class="quick-intake-sub">A few quick details — I respond personally within 24 hours.</p>
+      </div>
+      <form class="contact-form quick-intake-form" name="contact" method="POST" data-netlify="true">
+        <input type="hidden" name="form-name" value="contact" />
+        <input type="hidden" name="form-source" value="hero-quick-intake" />
+        <div class="form-row">
+          <input type="text" name="name" placeholder="Your Name" required />
+          <input type="email" name="email" placeholder="Email Address" required />
+        </div>
+        <div class="form-row">
+          <input type="tel" name="phone" placeholder="Phone Number" required />
+          <select name="project-type" required>
+            <option value="" disabled selected>What are you interested in?</option>
+            <option value="painting">Original Painting or Commission</option>
+            <option value="decorative-finish">Decorative Wall Finish</option>
+            <option value="mural">Mural or Large-Scale Work</option>
+            <option value="multiple">Multiple Services</option>
+            <option value="not-sure">Not Sure Yet — Just Exploring</option>
+          </select>
+        </div>
+        <select name="budget-range">
+          <option value="" disabled selected>Investment range (optional)</option>
+          <option value="under-5k">Under $5,000</option>
+          <option value="5-15k">$5,000 – $15,000</option>
+          <option value="15-50k">$15,000 – $50,000</option>
+          <option value="50k-plus">$50,000+</option>
+          <option value="not-sure">Not sure yet</option>
+        </select>
+        <button type="submit" class="btn-primary">Begin the Conversation</button>
+      </form>
+    </div>
+  </section>
+
   <!-- TRUST STRIP -->
   <div class="trust-strip">
     <div class="trust-strip-inner">
@@ -861,8 +900,7 @@
     // The dual-path design means leads sync to the CRM app reliably even
     // if Netlify's outgoing webhook is unconfigured or has a hiccup.
     // keepalive:true lets requests survive page unload.
-    const contactForm = document.querySelector('form.contact-form');
-    if (contactForm) {
+    document.querySelectorAll('form.contact-form').forEach(contactForm => {
       contactForm.addEventListener('submit', async e => {
         e.preventDefault();
         const submitBtn = contactForm.querySelector('button[type="submit"]');
@@ -904,7 +942,7 @@
         contactForm.reset();
         if (submitBtn) { submitBtn.disabled = false; submitBtn.textContent = originalBtnText; }
       });
-    }
+    });
   </script>
 
 </body>

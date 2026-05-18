@@ -189,6 +189,40 @@ nav {
 }
 .hero-actions { display: flex; gap: 1.1rem; flex-wrap: wrap; }
 
+/* ---- QUICK INTAKE — compact form right after the hero ---- */
+.quick-intake { padding: 4.5rem var(--gutter); position: relative; z-index: 1; }
+.quick-intake-inner {
+  max-width: var(--max);
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: 1fr 1.2fr;
+  gap: 3.5rem;
+  align-items: center;
+  background: rgba(255, 252, 248, 0.55);
+  backdrop-filter: blur(4px);
+  -webkit-backdrop-filter: blur(4px);
+  border: 1px solid rgba(184,140,48,0.08);
+  border-top: 2px solid rgba(184,140,48,0.20);
+  padding: 3rem 3rem;
+}
+.quick-intake-copy h2 {
+  color: #1A1410;
+  font-weight: 500;
+  margin: 0.5rem 0 0.75rem;
+  text-shadow: var(--ts-lift);
+}
+.quick-intake .eyebrow { color: var(--bronze); }
+.quick-intake-sub {
+  color: #2A2018;
+  font-size: 0.95rem;
+  line-height: 1.6;
+  margin: 0;
+}
+.quick-intake-form { gap: 0.85rem; }
+@media (max-width: 860px) {
+  .quick-intake-inner { grid-template-columns: 1fr; gap: 2rem; padding: 2.25rem 1.75rem; }
+}
+
 /* ---- MARQUEE — frosted strip for legibility ---- */
 .marquee-wrap {
   overflow: hidden;
