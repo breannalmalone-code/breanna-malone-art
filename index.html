@@ -866,6 +866,7 @@
       contactForm.addEventListener('submit', async e => {
         e.preventDefault();
         const submitBtn = contactForm.querySelector('button[type="submit"]');
+        const originalBtnText = submitBtn ? submitBtn.textContent : '';
         if (submitBtn) { submitBtn.disabled = true; submitBtn.textContent = 'Sending…'; }
 
         const formData = new FormData(contactForm);
@@ -892,7 +893,16 @@
 
         await Promise.allSettled([netlifyPost, atelierPost]);
 
-        contactForm.innerHTML = '<p class="form-success">Thank you. Breanna will respond personally within 24 hours.</p>';
+        // Show success ABOVE the form (do NOT destroy the form markup), reset
+        // fields and re-enable the button so the form remains visible and usable.
+        const existing = contactForm.parentNode.querySelector('.form-success');
+        if (existing) existing.remove();
+        const success = document.createElement('p');
+        success.className = 'form-success';
+        success.textContent = 'Thank you. Breanna will respond personally within 24 hours.';
+        contactForm.parentNode.insertBefore(success, contactForm);
+        contactForm.reset();
+        if (submitBtn) { submitBtn.disabled = false; submitBtn.textContent = originalBtnText; }
       });
     }
   </script>
