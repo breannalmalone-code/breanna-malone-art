@@ -199,47 +199,68 @@ nav {
 }
 .hero-actions { display: flex; gap: 1.1rem; flex-wrap: wrap; }
 
-/* ---- HERO FORM CARD — embedded intake on the right side of the hero ---- */
+/* ---- HERO FORM CARD — embedded intake on the right side of the hero ----
+   Matches the warm cream/translucent treatment used across the site
+   (about-inner, contact-inner) so the card reads as part of the page,
+   not a popup floating on top of it. */
 .hero-form-card {
-  background: rgba(20, 16, 12, 0.62);
-  backdrop-filter: blur(14px);
-  -webkit-backdrop-filter: blur(14px);
-  border: 1px solid rgba(184,140,48,0.32);
-  padding: 2rem 1.8rem 1.8rem;
-  box-shadow: 0 18px 60px rgba(0,0,0,0.35);
+  background: rgba(255, 252, 248, 0.55);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  border: 1px solid rgba(180,150,100,0.10);
+  border-top: 2px solid rgba(184,140,48,0.32);
+  padding: 2.25rem 2rem 1.75rem;
+  box-shadow: 0 20px 60px rgba(26,20,16,0.18), 0 4px 18px rgba(26,20,16,0.10);
+  transition: background 0.25s, border-top-color 0.25s;
 }
-.hero-form-card .eyebrow { color: var(--bronze-lt); margin: 0; }
+.hero-form-card:hover {
+  background: rgba(255, 252, 248, 0.68);
+  border-top-color: rgba(184,140,48,0.48);
+}
+.hero-form-card .eyebrow {
+  color: var(--bronze);
+  margin: 0;
+  text-shadow: var(--ts-lift);
+}
 .hero-form-card h3 {
   font-family: var(--serif);
   font-weight: 500;
   font-size: 1.55rem;
-  color: var(--cream);
-  margin: 0.5rem 0 0.4rem;
+  color: #1A1410;
+  margin: 0.55rem 0 0.4rem;
   line-height: 1.2;
-  text-shadow: 0 1px 6px rgba(0,0,0,0.5);
+  text-shadow: var(--ts-lift);
 }
 .hero-form-sub {
   font-family: var(--sans);
-  font-size: 0.78rem;
-  color: rgba(250,247,242,0.78);
-  margin: 0 0 1.25rem;
-  letter-spacing: 0.02em;
+  font-size: 0.74rem;
+  font-weight: 400;
+  color: #5A4A3A;
+  margin: 0 0 1.5rem;
+  letter-spacing: 0.04em;
+  text-shadow: var(--ts-lift);
 }
 .hero-form { gap: 0.7rem; }
 .hero-form input,
-.hero-form select,
-.hero-form textarea {
-  background: rgba(255,252,248,0.94);
+.hero-form select {
+  background: rgba(255,252,248,0.96);
+  border: 1px solid rgba(90,70,50,0.18);
   font-size: 0.88rem;
-  padding: 0.78rem 1rem;
+  padding: 0.85rem 1.05rem;
+}
+.hero-form input:focus,
+.hero-form select:focus {
+  border-color: rgba(184,140,48,0.55);
+  background: rgba(255,252,248,1);
 }
 .hero-form button[type="submit"] {
-  margin-top: 0.3rem;
+  margin-top: 0.5rem;
   width: 100%;
+  padding: 1rem 1.5rem;
 }
 @media (max-width: 960px) {
   .hero-inner { grid-template-columns: 1fr; gap: 2.5rem; }
-  .hero-form-card { padding: 1.5rem 1.3rem 1.3rem; }
+  .hero-form-card { padding: 1.75rem 1.4rem 1.4rem; }
 }
 
 /* ---- MARQUEE — frosted strip for legibility ---- */
