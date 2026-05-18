@@ -172,7 +172,17 @@ nav {
   mask-image:         linear-gradient(to bottom, black 55%, transparent 100%);
   pointer-events: none;
 }
-.hero-inner { max-width: 700px; position: relative; z-index: 2; }
+.hero-inner {
+  max-width: var(--max);
+  width: 100%;
+  position: relative;
+  z-index: 2;
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) minmax(360px, 440px);
+  gap: 4rem;
+  align-items: center;
+}
+.hero-content { max-width: 700px; }
 .hero-rule { display: block; width: 52px; height: 1px; background: linear-gradient(90deg, var(--bronze-lt), var(--bronze-xlr)); margin-bottom: 1.5rem; }
 .hero-inner h1 { margin-bottom: 1.5rem; }
 .hero-sub { font-size: 1.08rem; color: rgba(250,247,242,0.90); max-width: 520px; margin-bottom: 1.5rem; line-height: 1.85; text-shadow: 0 1px 6px rgba(0,0,0,0.4); }
@@ -189,38 +199,47 @@ nav {
 }
 .hero-actions { display: flex; gap: 1.1rem; flex-wrap: wrap; }
 
-/* ---- QUICK INTAKE — compact form right after the hero ---- */
-.quick-intake { padding: 4.5rem var(--gutter); position: relative; z-index: 1; }
-.quick-intake-inner {
-  max-width: var(--max);
-  margin: 0 auto;
-  display: grid;
-  grid-template-columns: 1fr 1.2fr;
-  gap: 3.5rem;
-  align-items: center;
-  background: rgba(255, 252, 248, 0.55);
-  backdrop-filter: blur(4px);
-  -webkit-backdrop-filter: blur(4px);
-  border: 1px solid rgba(184,140,48,0.08);
-  border-top: 2px solid rgba(184,140,48,0.20);
-  padding: 3rem 3rem;
+/* ---- HERO FORM CARD — embedded intake on the right side of the hero ---- */
+.hero-form-card {
+  background: rgba(20, 16, 12, 0.62);
+  backdrop-filter: blur(14px);
+  -webkit-backdrop-filter: blur(14px);
+  border: 1px solid rgba(184,140,48,0.32);
+  padding: 2rem 1.8rem 1.8rem;
+  box-shadow: 0 18px 60px rgba(0,0,0,0.35);
 }
-.quick-intake-copy h2 {
-  color: #1A1410;
+.hero-form-card .eyebrow { color: var(--bronze-lt); margin: 0; }
+.hero-form-card h3 {
+  font-family: var(--serif);
   font-weight: 500;
-  margin: 0.5rem 0 0.75rem;
-  text-shadow: var(--ts-lift);
+  font-size: 1.55rem;
+  color: var(--cream);
+  margin: 0.5rem 0 0.4rem;
+  line-height: 1.2;
+  text-shadow: 0 1px 6px rgba(0,0,0,0.5);
 }
-.quick-intake .eyebrow { color: var(--bronze); }
-.quick-intake-sub {
-  color: #2A2018;
-  font-size: 0.95rem;
-  line-height: 1.6;
-  margin: 0;
+.hero-form-sub {
+  font-family: var(--sans);
+  font-size: 0.78rem;
+  color: rgba(250,247,242,0.78);
+  margin: 0 0 1.25rem;
+  letter-spacing: 0.02em;
 }
-.quick-intake-form { gap: 0.85rem; }
-@media (max-width: 860px) {
-  .quick-intake-inner { grid-template-columns: 1fr; gap: 2rem; padding: 2.25rem 1.75rem; }
+.hero-form { gap: 0.7rem; }
+.hero-form input,
+.hero-form select,
+.hero-form textarea {
+  background: rgba(255,252,248,0.94);
+  font-size: 0.88rem;
+  padding: 0.78rem 1rem;
+}
+.hero-form button[type="submit"] {
+  margin-top: 0.3rem;
+  width: 100%;
+}
+@media (max-width: 960px) {
+  .hero-inner { grid-template-columns: 1fr; gap: 2.5rem; }
+  .hero-form-card { padding: 1.5rem 1.3rem 1.3rem; }
 }
 
 /* ---- MARQUEE — frosted strip for legibility ---- */
