@@ -217,17 +217,12 @@ nav {
   background: rgba(255, 252, 248, 0.68);
   border-top-color: rgba(184,140,48,0.48);
 }
-.hero-form-card .eyebrow {
-  color: var(--bronze);
-  margin: 0;
-  text-shadow: var(--ts-lift);
-}
 .hero-form-card h3 {
   font-family: var(--serif);
   font-weight: 500;
-  font-size: 1.55rem;
+  font-size: 1.65rem;
   color: #1A1410;
-  margin: 0.55rem 0 0.4rem;
+  margin: 0 0 0.5rem;
   line-height: 1.2;
   text-shadow: var(--ts-lift);
 }
