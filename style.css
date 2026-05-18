@@ -207,15 +207,9 @@ nav {
   background: rgba(255, 252, 248, 0.55);
   backdrop-filter: blur(10px);
   -webkit-backdrop-filter: blur(10px);
-  border: 1px solid rgba(180,150,100,0.10);
-  border-top: 2px solid rgba(184,140,48,0.32);
-  padding: 2.25rem 2rem 1.75rem;
-  box-shadow: 0 20px 60px rgba(26,20,16,0.18), 0 4px 18px rgba(26,20,16,0.10);
-  transition: background 0.25s, border-top-color 0.25s;
-}
-.hero-form-card:hover {
-  background: rgba(255, 252, 248, 0.68);
-  border-top-color: rgba(184,140,48,0.48);
+  border-top: 1px solid rgba(184,140,48,0.28);
+  padding: 2.5rem 2.25rem 2rem;
+  box-shadow: 0 1px 2px rgba(60,45,30,0.05), 0 24px 48px -16px rgba(60,45,30,0.12);
 }
 .hero-form-card h3 {
   font-family: var(--serif);
@@ -235,13 +229,13 @@ nav {
   letter-spacing: 0.04em;
   text-shadow: var(--ts-lift);
 }
-.hero-form { gap: 0.7rem; }
+.hero-form { gap: 0.85rem; }
 .hero-form input,
 .hero-form select {
   background: rgba(255,252,248,0.96);
   border: 1px solid rgba(90,70,50,0.18);
-  font-size: 0.88rem;
-  padding: 0.85rem 1.05rem;
+  font-size: 0.9rem;
+  padding: 1rem 1.1rem;
 }
 .hero-form input:focus,
 .hero-form select:focus {
