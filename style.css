@@ -802,12 +802,12 @@ footer { background: var(--charcoal-dk); padding: 3.5rem var(--gutter); border-t
 /* Direct-contact tap-to-call lines (added 2026-06-11) */
 .contact-direct {
   margin-top: 1.25rem;
-  color: var(--text-muted, #6b6258);
+  color: var(--mid-text);
   font-size: 0.95rem;
   letter-spacing: 0.02em;
 }
 .contact-direct a {
-  color: var(--bronze, #B88C30);
+  color: var(--bronze);
   text-decoration: none;
   font-weight: 500;
   border-bottom: 1px solid currentColor;
@@ -821,7 +821,7 @@ footer { background: var(--charcoal-dk); padding: 3.5rem var(--gutter); border-t
   opacity: 0.85;
 }
 .footer-contact a {
-  color: var(--bronze, #B88C30);
+  color: var(--bronze);
   text-decoration: none;
   border-bottom: 1px solid currentColor;
 }
