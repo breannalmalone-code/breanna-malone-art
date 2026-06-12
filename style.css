@@ -826,3 +826,24 @@ footer { background: var(--charcoal-dk); padding: 3.5rem var(--gutter); border-t
   border-bottom: 1px solid currentColor;
 }
 .footer-contact a:hover { opacity: 0.8; }
+
+/* Footer nav anchors (added 2026-06-11) */
+.footer-nav {
+  display: flex; flex-wrap: wrap; justify-content: center;
+  gap: 0.4rem 1.5rem;
+  margin: 1.5rem 0 0.4rem;
+  font-family: var(--sans);
+  font-size: 0.85rem;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+.footer-nav a {
+  color: var(--mid-text);
+  text-decoration: none;
+  padding: 0.25rem 0;
+  transition: color 0.2s;
+}
+.footer-nav a:hover { color: var(--bronze); }
+@media (max-width: 640px) {
+  .footer-nav { gap: 0.3rem 1rem; font-size: 0.78rem; }
+}
