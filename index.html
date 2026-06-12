@@ -293,6 +293,23 @@
       }
     }
   </style>
+
+  <!-- Domain verification: paste tag from Meta Business Settings → Brand Safety → Domains -->
+  <!-- <meta name="facebook-domain-verification" content="PASTE_TOKEN_HERE" /> -->
+
+  <!-- Meta Pixel -->
+  <script>
+    !function(f,b,e,v,n,t,s){if(f.fbq)return;n=f.fbq=function(){n.callMethod?
+    n.callMethod.apply(n,arguments):n.queue.push(arguments)};if(!f._fbq)f._fbq=n;
+    n.push=n;n.loaded=!0;n.version='2.0';n.queue=[];t=b.createElement(e);t.async=!0;
+    t.src=v;s=b.getElementsByTagName(e)[0];s.parentNode.insertBefore(t,s)}(window,
+    document,'script','https://connect.facebook.net/en_US/fbevents.js');
+    fbq('init', '991359796575461');
+    fbq('track', 'PageView');
+  </script>
+  <noscript><img height="1" width="1" style="display:none"
+    src="https://www.facebook.com/tr?id=991359796575461&ev=PageView&noscript=1" alt="" /></noscript>
+  <!-- End Meta Pixel -->
 </head>
 <body>
 
@@ -337,7 +354,7 @@
           <input type="hidden" name="form-source" value="hero" />
           <input type="text"  name="name"  placeholder="Name"            required aria-label="Name" autocomplete="name" />
           <input type="email" name="email" placeholder="Email"           required aria-label="Email" inputmode="email" autocomplete="email" />
-          <input type="tel"   name="phone" placeholder="Phone"            required aria-label="Phone" inputmode="tel" autocomplete="tel" />
+          <input type="tel"   name="phone" placeholder="Phone (optional)"  aria-label="Phone" inputmode="tel" autocomplete="tel" />
           <select name="project-type" required aria-label="What you have in mind">
             <option value="" disabled selected>What you have in mind</option>
             <option value="painting">Original Painting or Commission</option>
@@ -346,8 +363,8 @@
             <option value="multiple">Multiple projects</option>
             <option value="not-sure">Still exploring</option>
           </select>
-          <select name="budget-range" required aria-label="Investment range">
-            <option value="" disabled selected>Investment range</option>
+          <select name="budget-range" aria-label="Investment range">
+            <option value="" disabled selected>Investment range (optional)</option>
             <option value="under-5k">Under $5,000</option>
             <option value="5-15k">$5,000 – $15,000</option>
             <option value="15-50k">$15,000 – $50,000</option>
@@ -886,6 +903,24 @@
       io.observe(v);
     });
 
+    // Meta Pixel ViewContent — fires once when the portfolio section enters
+    // viewport. Upstream-of-Lead signal so Meta has enough volume to optimize
+    // (Lead alone is too rare for a high-ticket business to leave learning).
+    (() => {
+      const portfolio = document.getElementById('portfolio');
+      if (!portfolio || !window.fbq) return;
+      let fired = false;
+      const io = new IntersectionObserver(entries => {
+        if (fired) return;
+        if (entries.some(e => e.isIntersecting)) {
+          fired = true;
+          try { fbq('track', 'ViewContent', { content_name: 'Portfolio', content_category: 'art' }); } catch {}
+          io.disconnect();
+        }
+      }, { threshold: 0.25 });
+      io.observe(portfolio);
+    })();
+
     // Intake form: fire submissions to BOTH Netlify Forms (for email
     // notification + backup capture) AND the Atelier CRM backend directly.
     // The dual-path design means leads sync to the CRM app reliably even
@@ -921,6 +956,17 @@
         }).catch(err => console.error('[form] Atelier post failed', err));
 
         await Promise.allSettled([netlifyPost, atelierPost]);
+
+        // Path 3: Meta Pixel Lead event with eventID for CAPI dedup.
+        // Backend (atelier-backend) also fires Lead via Conversions API with
+        // the same event_id; Meta deduplicates server-event ⊕ browser-event.
+        try {
+          const budgetBand = { 'under-5k': 2500, '5-15k': 10000, '15-50k': 32500, '50k-plus': 75000 };
+          const value = budgetBand[data['budget-range']] || 0;
+          window.fbq && fbq('track', 'Lead',
+            { value, currency: 'USD', content_category: data['project-type'] || 'commission' },
+            { eventID: data.event_id });
+        } catch (err) { console.warn('[fbq] Lead', err); }
 
         // Show success ABOVE the form (do NOT destroy the form markup), reset
         // fields and re-enable the button so the form remains visible and usable.
