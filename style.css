@@ -798,3 +798,31 @@ footer { background: var(--charcoal-dk); padding: 3.5rem var(--gutter); border-t
   .carousel-slide { max-width: 95%; }
   .carousel-btn { width: 2.6rem; height: 2.6rem; font-size: 1.6rem; }
 }
+
+/* Direct-contact tap-to-call lines (added 2026-06-11) */
+.contact-direct {
+  margin-top: 1.25rem;
+  color: var(--text-muted, #6b6258);
+  font-size: 0.95rem;
+  letter-spacing: 0.02em;
+}
+.contact-direct a {
+  color: var(--bronze, #B88C30);
+  text-decoration: none;
+  font-weight: 500;
+  border-bottom: 1px solid currentColor;
+  padding-bottom: 1px;
+}
+.contact-direct a:hover { opacity: 0.8; }
+.footer-contact {
+  margin-top: 0.4rem;
+  font-size: 0.9rem;
+  letter-spacing: 0.02em;
+  opacity: 0.85;
+}
+.footer-contact a {
+  color: var(--bronze, #B88C30);
+  text-decoration: none;
+  border-bottom: 1px solid currentColor;
+}
+.footer-contact a:hover { opacity: 0.8; }
