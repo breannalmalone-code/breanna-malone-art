@@ -343,10 +343,11 @@
         <p class="hero-sub">Original paintings, decorative finishes, and custom work — conceived and executed by an artist, entirely by hand.</p>
         <p class="hero-availability">Accepting select commissions &nbsp;·&nbsp; Based in West Palm Beach, FL &nbsp;·&nbsp; Serving all of South Florida</p>
         <div class="hero-actions">
+          <a href="#hero-form" class="btn-primary">Start a Conversation</a>
           <a href="#portfolio" class="btn-outline">View Portfolio</a>
         </div>
       </div>
-      <div class="hero-form-card">
+      <div class="hero-form-card" id="hero-form">
         <h3>Start a conversation.</h3>
         <p class="hero-form-sub">A personal reply within 24 hours.</p>
         <form class="contact-form hero-form" name="contact" method="POST" data-netlify="true">
@@ -907,22 +908,30 @@
       io.observe(v);
     });
 
-    // Meta Pixel ViewContent — fires once when the portfolio section enters
+    // Meta Pixel ViewContent — fires once per section when it enters the
     // viewport. Upstream-of-Lead signal so Meta has enough volume to optimize
     // (Lead alone is too rare for a high-ticket business to leave learning).
+    // Each section fires at most once per pageload; content_name distinguishes.
     (() => {
-      const portfolio = document.getElementById('portfolio');
-      if (!portfolio || !window.fbq) return;
-      let fired = false;
-      const io = new IntersectionObserver(entries => {
-        if (fired) return;
-        if (entries.some(e => e.isIntersecting)) {
-          fired = true;
-          try { fbq('track', 'ViewContent', { content_name: 'Portfolio', content_category: 'art' }); } catch {}
-          io.disconnect();
-        }
-      }, { threshold: 0.25 });
-      io.observe(portfolio);
+      if (!window.fbq) return;
+      const sections = [
+        { id: 'portfolio',    name: 'Portfolio' },
+        { id: 'original-art', name: 'Original Art' },
+      ];
+      sections.forEach(({ id, name }) => {
+        const el = document.getElementById(id);
+        if (!el) return;
+        let fired = false;
+        const io = new IntersectionObserver(entries => {
+          if (fired) return;
+          if (entries.some(e => e.isIntersecting)) {
+            fired = true;
+            try { fbq('track', 'ViewContent', { content_name: name, content_category: 'art' }); } catch {}
+            io.disconnect();
+          }
+        }, { threshold: 0.25 });
+        io.observe(el);
+      });
     })();
 
     // Intake form: fire submissions to BOTH Netlify Forms (for email
