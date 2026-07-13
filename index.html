@@ -327,7 +327,7 @@
         <li><a href="#services">Services</a></li>
         <li><a href="#portfolio">Portfolio</a></li>
         <li><a href="#original-art">Original Art</a></li>
-        <li><a href="#contact" class="nav-cta">Start a Conversation</a></li>
+        <li><a href="#contact" class="nav-cta">Request a Consultation</a></li>
       </ul>
       <button class="nav-toggle" aria-label="Open menu">&#9776;</button>
     </div>
@@ -338,17 +338,17 @@
     <div class="hero-inner">
       <div class="hero-content">
         <span class="hero-rule"></span>
-        <p class="eyebrow">Original Art &nbsp;·&nbsp; Decorative Surfaces &nbsp;·&nbsp; Private Commissions</p>
+        <p class="eyebrow">Original Paintings &nbsp;·&nbsp; Decorative Finishes &nbsp;·&nbsp; Private Commissions</p>
         <h1>Art that transforms<br /><em>the space it lives in.</em></h1>
-        <p class="hero-sub">Original paintings, decorative finishes, and custom work — conceived and executed by an artist, entirely by hand.</p>
+        <p class="hero-sub">Original paintings, decorative finishes, murals, and custom work — handcrafted by a local artist.</p>
         <p class="hero-availability">Accepting select commissions &nbsp;·&nbsp; Based in West Palm Beach, FL &nbsp;·&nbsp; Serving all of South Florida</p>
         <div class="hero-actions">
-          <a href="#hero-form" class="btn-primary">Start a Conversation</a>
+          <a href="#hero-form" class="btn-primary">Begin a Commission</a>
           <a href="#portfolio" class="btn-outline">View Portfolio</a>
         </div>
       </div>
       <div class="hero-form-card" id="hero-form">
-        <h3>Start a conversation.</h3>
+        <h3>Begin a commission.</h3>
         <p class="hero-form-sub">A personal reply within 24 hours.</p>
         <form class="contact-form hero-form" name="contact" method="POST" data-netlify="true">
           <input type="hidden" name="form-name" value="contact" />
@@ -373,7 +373,7 @@
             <option value="not-sure">Not sure yet</option>
           </select>
           <textarea name="message" rows="3" placeholder="Tell me more!" aria-label="Additional notes"></textarea>
-          <button type="submit" class="btn-primary">Let's Talk</button>
+          <button type="submit" class="btn-primary">Begin a Commission</button>
         </form>
       </div>
     </div>
@@ -508,7 +508,7 @@
       <h2>The details people remember.</h2>
       <p>The most admired spaces have one thing in common — someone paid attention to the details. A hand-applied finish or an original painting changes how a room feels. It is the thing guests notice, photographers capture, and time only makes better.</p>
       <div class="why-cta">
-        <a href="#contact" class="btn-primary">Start a Conversation</a>
+        <a href="#contact" class="btn-primary">Begin a Commission</a>
       </div>
     </div>
   </section>
@@ -782,13 +782,6 @@
           </select>
         </div>
         <div class="form-row">
-          <select name="timeline">
-            <option value="" disabled selected>Timeline (optional)</option>
-            <option value="asap">As soon as possible</option>
-            <option value="1-3-months">Within 1–3 months</option>
-            <option value="3-6-months">3–6 months out</option>
-            <option value="planning">Just planning ahead</option>
-          </select>
           <select name="budget-range">
             <option value="" disabled selected>Investment range (optional)</option>
             <option value="under-5k">Under $5,000</option>
@@ -799,16 +792,16 @@
           </select>
         </div>
         <textarea name="message" rows="4" placeholder="Anything else you'd like to share — the space, inspiration, or ideas you have in mind..."></textarea>
-        <button type="submit" class="btn-primary">Begin the Conversation</button>
+        <button type="submit" class="btn-primary">Begin a Commission</button>
       </form>
       <p class="contact-direct center">Or call &amp; text directly: <a href="tel:+19546218322">(954) 621-8322</a></p>
     </div>
   </section>
 
   <!-- STICKY CTA -->
-  <a href="#contact" class="sticky-cta" aria-label="Start a conversation">
+  <a href="#contact" class="sticky-cta" aria-label="Begin a commission">
     <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg>
-    <span>Let's Talk</span>
+    <span>Begin a Commission</span>
   </a>
 
   <!-- FOOTER -->
@@ -991,6 +984,21 @@
         contactForm.parentNode.insertBefore(success, contactForm);
         contactForm.reset();
         if (submitBtn) { submitBtn.disabled = false; submitBtn.textContent = originalBtnText; }
+      });
+    });
+
+    // FormStart: fire once per form per session the first time someone engages
+    // a field. Lets us separate "never engaged the form" from "started but
+    // abandoned" in Events Manager. Custom event — does not affect Lead/CAPI.
+    document.querySelectorAll('form.contact-form').forEach(form => {
+      let started = false;
+      form.addEventListener('focusin', () => {
+        if (started) return;
+        started = true;
+        try {
+          const src = (form.querySelector('[name="form-source"]') || {}).value || 'contact';
+          window.fbq && fbq('trackCustom', 'FormStart', { form_source: src });
+        } catch (err) { console.warn('[fbq] FormStart', err); }
       });
     });
   </script>

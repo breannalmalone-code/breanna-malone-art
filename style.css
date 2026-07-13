@@ -248,8 +248,10 @@ nav {
   padding: 1rem 1.5rem;
 }
 @media (max-width: 960px) {
-  .hero-inner { grid-template-columns: 1fr; gap: 2.5rem; }
-  .hero-form-card { padding: 1.75rem 1.4rem 1.4rem; }
+  .hero-inner { grid-template-columns: 1fr; gap: 2rem; }
+  /* On phones, surface the intake form ABOVE the marketing copy so Name/
+     Email/submit land in the first viewport instead of below a wall of text. */
+  .hero-form-card { order: -1; padding: 1.75rem 1.4rem 1.4rem; }
 }
 
 /* ---- MARQUEE — frosted strip for legibility ---- */
