@@ -869,7 +869,10 @@ footer { background: var(--charcoal-dk); padding: 3.5rem var(--gutter); border-t
 .pr-row { display: flex; gap: 0.75rem; justify-content: center; }
 .pr-row input { flex: 1 1 180px; min-width: 0; }
 .pr-row .btn-primary { flex: 0 0 auto; }
-@media (max-width: 640px) { .pr-row { flex-direction: column; } }
+@media (max-width: 640px) {
+  .pr-row { flex-direction: column; }
+  .pr-row input { flex: 0 0 auto; } /* flex-basis would become height in column direction */
+}
 
 /* "Just exploring?" escape hatch under the hero form */
 .hero-form-alt { margin-top: 0.9rem; text-align: center; font-size: 0.85rem; color: var(--mid-text); }
