@@ -355,7 +355,6 @@
           <input type="hidden" name="form-source" value="hero" />
           <input type="text"  name="name"  placeholder="Name"            required aria-label="Name" autocomplete="name" />
           <input type="email" name="email" placeholder="Email"           required aria-label="Email" inputmode="email" autocomplete="email" />
-          <input type="tel"   name="phone" placeholder="Phone (optional)"  aria-label="Phone" inputmode="tel" autocomplete="tel" />
           <select name="project-type" required aria-label="What you have in mind">
             <option value="" disabled selected>What you have in mind</option>
             <option value="painting">Original Painting or Commission</option>
@@ -364,16 +363,8 @@
             <option value="multiple">Multiple projects</option>
             <option value="not-sure">Still exploring</option>
           </select>
-          <select name="budget-range" aria-label="Investment range">
-            <option value="" disabled selected>Investment range (optional)</option>
-            <option value="under-5k">Under $5,000</option>
-            <option value="5-15k">$5,000 – $15,000</option>
-            <option value="15-50k">$15,000 – $50,000</option>
-            <option value="50k-plus">$50,000+</option>
-            <option value="not-sure">Not sure yet</option>
-          </select>
-          <textarea name="message" rows="3" placeholder="Tell me more!" aria-label="Additional notes"></textarea>
           <button type="submit" class="btn-primary">Begin a Commission</button>
+          <p class="hero-form-alt">Just exploring? <a href="#portfolio-request">Request the Studio&nbsp;Portfolio</a></p>
         </form>
       </div>
     </div>
@@ -555,6 +546,29 @@
         <button class="carousel-btn carousel-btn-prev" aria-label="Previous slide">&lsaquo;</button>
         <button class="carousel-btn carousel-btn-next" aria-label="Next slide">&rsaquo;</button>
       </div>
+    </div>
+  </section>
+
+  <!-- STUDIO PORTFOLIO REQUEST — calm soft on-ramp for visitors not ready to
+       commission. Posts through the same dual-path handler (Netlify + CRM),
+       tagged via subject + form-source so soft requests are distinguishable
+       from commission inquiries in the CRM. -->
+  <section id="portfolio-request">
+    <div class="pr-inner">
+      <p class="eyebrow">The Studio Portfolio</p>
+      <h2>See the work before you begin.</h2>
+      <p class="pr-sub">A private collection of recent commissions, finishes, and murals — sent personally by Breanna.</p>
+      <form class="contact-form portfolio-form" name="contact" method="POST" data-netlify="true"
+            data-success="Thank you — Breanna will send the portfolio personally within 24 hours.">
+        <input type="hidden" name="form-name" value="contact" />
+        <input type="hidden" name="form-source" value="portfolio" />
+        <input type="hidden" name="subject" value="Studio Portfolio request" />
+        <div class="pr-row">
+          <input type="text"  name="name"  placeholder="First name" required aria-label="First name" autocomplete="given-name" />
+          <input type="email" name="email" placeholder="Email"      required aria-label="Email" inputmode="email" autocomplete="email" />
+          <button type="submit" class="btn-primary">Request the Portfolio</button>
+        </div>
+      </form>
     </div>
   </section>
 
@@ -970,7 +984,9 @@
           const budgetBand = { 'under-5k': 2500, '5-15k': 10000, '15-50k': 32500, '50k-plus': 75000 };
           const value = budgetBand[data['budget-range']] || 0;
           window.fbq && fbq('track', 'Lead',
-            { value, currency: 'USD', content_category: data['project-type'] || 'commission' },
+            { value, currency: 'USD',
+              content_category: data['project-type'] || 'commission',
+              content_name: data.subject || 'Commission inquiry' },
             { eventID: data.event_id });
         } catch (err) { console.warn('[fbq] Lead', err); }
 
@@ -980,7 +996,7 @@
         if (existing) existing.remove();
         const success = document.createElement('p');
         success.className = 'form-success';
-        success.textContent = 'Thank you. Breanna will respond personally within 24 hours.';
+        success.textContent = contactForm.dataset.success || 'Thank you. Breanna will respond personally within 24 hours.';
         contactForm.parentNode.insertBefore(success, contactForm);
         contactForm.reset();
         if (submitBtn) { submitBtn.disabled = false; submitBtn.textContent = originalBtnText; }
