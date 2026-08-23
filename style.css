@@ -137,7 +137,7 @@ nav {
 }
 .wordmark { font-family: var(--serif); font-size: 1.4rem; font-weight: 400; color: var(--cream); text-decoration: none; letter-spacing: 0.06em; }
 .nav-links { list-style: none; display: flex; gap: 2.5rem; align-items: center; }
-.nav-links a { font-size: 0.68rem; font-weight: 400; letter-spacing: 0.18em; text-transform: uppercase; color: rgba(250,247,242,0.52); text-decoration: none; transition: color 0.2s; }
+.nav-links a { font-size: 0.78rem; font-weight: 400; letter-spacing: 0.18em; text-transform: uppercase; color: rgba(250,247,242,0.72); text-decoration: none; transition: color 0.2s; padding: 0.5rem 0.15rem; display: inline-block; }
 .nav-links a:hover, .nav-links a.active { color: var(--cream); }
 .nav-cta { padding: 0.55rem 1.5rem; border: 1px solid rgba(250,247,242,0.3) !important; color: var(--cream) !important; transition: background 0.2s !important; }
 .nav-cta:hover { background: rgba(250,247,242,0.08) !important; }
@@ -234,7 +234,7 @@ nav {
 .hero-form select {
   background: rgba(255,252,248,0.96);
   border: 1px solid rgba(90,70,50,0.18);
-  font-size: 0.9rem;
+  font-size: 1rem; /* >=16px prevents iOS focus auto-zoom */
   padding: 1rem 1.1rem;
 }
 .hero-form input:focus,
@@ -708,17 +708,17 @@ nav {
   border: 1px solid rgba(90,70,50,0.20);
   background: rgba(255,252,248,0.92);
   color: var(--body-text);
-  font-family: var(--sans); font-size: 0.9rem; font-weight: 400;
+  font-family: var(--sans); font-size: 1rem; /* >=16px prevents iOS focus auto-zoom */ font-weight: 400;
   outline: none; transition: border-color 0.2s, background 0.2s;
 }
 .contact-form input::placeholder,
-.contact-form textarea::placeholder { color: rgba(90,74,58,0.60); }
+.contact-form textarea::placeholder { color: rgba(90,74,58,0.85); }
 .contact-form select { color: var(--body-text); cursor: pointer; -webkit-appearance: none; appearance: none; background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' viewBox='0 0 24 24' fill='none' stroke='%234A3A2C' stroke-width='2'%3E%3Cpath d='M6 9l6 6 6-6'/%3E%3C/svg%3E"); background-repeat: no-repeat; background-position: right 1rem center; padding-right: 2.5rem; }
-.contact-form select:invalid { color: rgba(90,74,58,0.60); }
+.contact-form select:invalid { color: rgba(90,74,58,0.85); }
 /* Catch non-required selects on their placeholder option too — :invalid
    only fires when `required` is set, so without this rule "Investment
    range" renders in body-text color while the other selects look muted. */
-.contact-form select:has(option[value=""]:checked) { color: rgba(90,74,58,0.60); }
+.contact-form select:has(option[value=""]:checked) { color: rgba(90,74,58,0.85); }
 .contact-form input:focus,
 .contact-form select:focus,
 .contact-form textarea:focus { border-color: rgba(184,140,48,0.5); background: rgba(255,252,248,0.98); }
@@ -770,8 +770,8 @@ nav {
 footer { background: var(--charcoal-dk); padding: 3.5rem var(--gutter); border-top: 1px solid rgba(184,140,48,0.14); }
 .footer-inner { max-width: var(--max); margin: 0 auto; text-align: center; display: flex; flex-direction: column; gap: 0.6rem; align-items: center; }
 .footer-inner .wordmark { font-size: 1.6rem; color: var(--cream); margin-bottom: 0.25rem; text-decoration: none; }
-.footer-sub { font-family: var(--sans); font-size: 0.62rem; font-weight: 400; letter-spacing: 0.16em; text-transform: uppercase; color: rgba(250,247,242,0.38); }
-.footer-copy { font-family: var(--sans); font-size: 0.62rem; font-weight: 300; color: rgba(250,247,242,0.22); }
+.footer-sub { font-family: var(--sans); font-size: 0.75rem; font-weight: 400; letter-spacing: 0.16em; text-transform: uppercase; color: rgba(250,247,242,0.60); }
+.footer-copy { font-family: var(--sans); font-size: 0.75rem; font-weight: 300; color: rgba(250,247,242,0.50); }
 
 /* ---- RESPONSIVE ---- */
 @media (max-width: 960px) {
@@ -881,5 +881,9 @@ footer { background: var(--charcoal-dk); padding: 3.5rem var(--gutter); border-t
 .pr-direct a:hover { opacity: 0.8; }
 
 /* "Just exploring?" escape hatch under the hero form */
-.hero-form-alt { margin-top: 0.9rem; text-align: center; font-size: 0.85rem; color: var(--mid-text); }
+.hero-form-alt { margin-top: 0.9rem; text-align: center; font-size: 0.9rem; color: var(--mid-text); }
 .hero-form-alt a { color: var(--bronze); text-decoration: underline; text-underline-offset: 3px; }
+
+@media (prefers-reduced-motion: reduce) {
+  .marquee-track { animation: none; }
+}
