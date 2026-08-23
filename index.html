@@ -355,6 +355,7 @@
           <input type="hidden" name="form-source" value="hero" />
           <input type="text"  name="name"  placeholder="Name"            required aria-label="Name" autocomplete="name" />
           <input type="email" name="email" placeholder="Email"           required aria-label="Email" inputmode="email" autocomplete="email" />
+          <input type="tel"   name="phone" placeholder="Phone — for a quick call or text" required aria-label="Phone" inputmode="tel" autocomplete="tel" />
           <select name="project-type" required aria-label="What you have in mind">
             <option value="" disabled selected>What you have in mind</option>
             <option value="painting">Original Painting or Commission</option>
@@ -365,6 +366,7 @@
           </select>
           <button type="submit" class="btn-primary">Begin a Commission</button>
           <p class="hero-form-alt">Just exploring? <a href="#portfolio-request">Request the Studio&nbsp;Portfolio</a></p>
+          <p class="hero-form-alt">Prefer to talk now? Call or text <a href="tel:+19546218322">(954)&nbsp;621-8322</a></p>
         </form>
       </div>
     </div>
@@ -566,9 +568,11 @@
         <div class="pr-row">
           <input type="text"  name="name"  placeholder="First name" required aria-label="First name" autocomplete="given-name" />
           <input type="email" name="email" placeholder="Email"      required aria-label="Email" inputmode="email" autocomplete="email" />
+          <input type="tel"   name="phone" placeholder="Phone (optional — for a quick text)" aria-label="Phone (optional)" inputmode="tel" autocomplete="tel" />
           <button type="submit" class="btn-primary">Request the Portfolio</button>
         </div>
       </form>
+      <p class="pr-direct">Or call &amp; text directly: <a href="tel:+19546218322">(954) 621-8322</a></p>
     </div>
   </section>
 
@@ -785,7 +789,7 @@
           <input type="email" name="email" placeholder="Email Address" required />
         </div>
         <div class="form-row">
-          <input type="tel" name="phone" placeholder="Phone (optional)" />
+          <input type="tel" name="phone" placeholder="Phone — for a quick call or text" required />
           <select name="project-type" required>
             <option value="" disabled selected>What are you interested in?</option>
             <option value="painting">Original Painting or Commission</option>
