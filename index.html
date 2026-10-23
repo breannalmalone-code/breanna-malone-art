@@ -350,13 +350,12 @@
       <div class="hero-form-card" id="hero-form">
         <h3>Begin a commission.</h3>
         <p class="hero-form-sub">A personal reply within 24 hours.</p>
-        <p class="hero-form-note">For homes, businesses, and design projects in South Florida. Lessons and artist mentoring are not offered.</p>
         <form class="contact-form hero-form" name="contact" method="POST" data-netlify="true" netlify-honeypot="company-website">
           <input type="hidden" name="form-name" value="contact" />
           <input type="hidden" name="form-source" value="hero" />
           <input type="text"  name="name"  placeholder="Name"            required aria-label="Name" autocomplete="name" />
           <input type="email" name="email" placeholder="Email"           required aria-label="Email" inputmode="email" autocomplete="email" />
-          <input type="tel"   name="phone" placeholder="Phone — for a quick call or text" required aria-label="Phone" inputmode="tel" autocomplete="tel" />
+          <input type="tel"   name="phone" placeholder="Phone" required aria-label="Phone" inputmode="tel" autocomplete="tel" />
           <select name="project-type" required aria-label="What you have in mind">
             <option value="" disabled selected>What you have in mind</option>
             <option value="painting">Original Painting or Commission</option>
@@ -788,7 +787,6 @@
       <p class="eyebrow center">Let's Work Together</p>
       <h2 class="center">Begin a collaboration.</h2>
       <p class="contact-sub center">Designers and architects — please mention your firm in the notes. I prioritize trade inquiries.</p>
-      <p class="contact-sub center">Private commissions for homes, businesses, and design projects. Lessons and artist mentoring are not offered.</p>
       <p class="contact-sub center">Tell me about your vision — here is what happens next:</p>
       <ol class="contact-expect">
         <li data-step="1.">I will respond within 24 hours.</li>
@@ -803,7 +801,7 @@
           <input type="email" name="email" placeholder="Email Address" required />
         </div>
         <div class="form-row">
-          <input type="tel" name="phone" placeholder="Phone — for a quick call or text" required />
+          <input type="tel" name="phone" placeholder="Phone" required aria-label="Phone" />
           <select name="project-type" required>
             <option value="" disabled selected>What are you interested in?</option>
             <option value="painting">Original Painting or Commission</option>
@@ -822,8 +820,8 @@
             <option value="50k-plus">$50,000+</option>
             <option value="not-sure">Not sure yet</option>
           </select>
-          <select name="timeline" aria-label="When would you like to begin? (optional)">
-            <option value="" disabled selected>Timeline (optional)</option>
+          <select name="timeline" required aria-label="Timeline">
+            <option value="" disabled selected>Timeline</option>
             <option value="0-3mo">Within 3 months</option>
             <option value="3-6mo">In 3 – 6 months</option>
             <option value="6-12mo">In 6 – 12 months</option>
