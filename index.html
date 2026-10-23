@@ -350,7 +350,8 @@
       <div class="hero-form-card" id="hero-form">
         <h3>Begin a commission.</h3>
         <p class="hero-form-sub">A personal reply within 24 hours.</p>
-        <form class="contact-form hero-form" name="contact" method="POST" data-netlify="true">
+        <p class="hero-form-note">For homes, businesses, and design projects in South Florida. Lessons and artist mentoring are not offered.</p>
+        <form class="contact-form hero-form" name="contact" method="POST" data-netlify="true" netlify-honeypot="company-website">
           <input type="hidden" name="form-name" value="contact" />
           <input type="hidden" name="form-source" value="hero" />
           <input type="text"  name="name"  placeholder="Name"            required aria-label="Name" autocomplete="name" />
@@ -364,6 +365,16 @@
             <option value="multiple">Multiple projects</option>
             <option value="not-sure">Still exploring</option>
           </select>
+          <select name="budget-range" required aria-label="Project investment">
+            <option value="" disabled selected>Project investment</option>
+            <option value="under-5k">Under $5,000</option>
+            <option value="5-15k">$5,000 – $15,000</option>
+            <option value="15-50k">$15,000 – $50,000</option>
+            <option value="50k-plus">$50,000+</option>
+            <option value="not-sure">Not sure yet</option>
+          </select>
+          <input type="text" name="project-location" placeholder="Project city or ZIP" required aria-label="Project city or ZIP" autocomplete="postal-code" />
+          <p class="hp" aria-hidden="true"><label>Leave this field empty <input type="text" name="company-website" tabindex="-1" autocomplete="off" /></label></p>
           <button type="submit" class="btn-primary">Begin a Commission</button>
           <p class="hero-form-alt">Just exploring? <a href="#portfolio-request">Request the Studio&nbsp;Portfolio</a></p>
           <p class="hero-form-alt">Prefer to talk now? Call or text <a href="tel:+19546218322">(954)&nbsp;621-8322</a></p>
@@ -560,11 +571,12 @@
       <p class="eyebrow">The Studio Portfolio</p>
       <h2>See the work before you begin.</h2>
       <p class="pr-sub">A private collection of recent commissions, finishes, and murals — sent personally by Breanna.</p>
-      <form class="contact-form portfolio-form" name="contact" method="POST" data-netlify="true"
+      <form class="contact-form portfolio-form" name="contact" method="POST" data-netlify="true" netlify-honeypot="company-website"
             data-success="Thank you — Breanna will send the portfolio personally within 24 hours.">
         <input type="hidden" name="form-name" value="contact" />
         <input type="hidden" name="form-source" value="portfolio" />
         <input type="hidden" name="subject" value="Studio Portfolio request" />
+        <p class="hp" aria-hidden="true"><label>Leave this field empty <input type="text" name="company-website" tabindex="-1" autocomplete="off" /></label></p>
         <div class="pr-row">
           <input type="text"  name="name"  placeholder="First name" required aria-label="First name" autocomplete="given-name" />
           <input type="email" name="email" placeholder="Email"      required aria-label="Email" inputmode="email" autocomplete="email" />
@@ -776,14 +788,16 @@
       <p class="eyebrow center">Let's Work Together</p>
       <h2 class="center">Begin a collaboration.</h2>
       <p class="contact-sub center">Designers and architects — please mention your firm in the notes. I prioritize trade inquiries.</p>
+      <p class="contact-sub center">Private commissions for homes, businesses, and design projects. Lessons and artist mentoring are not offered.</p>
       <p class="contact-sub center">Tell me about your vision — here is what happens next:</p>
       <ol class="contact-expect">
         <li data-step="1.">I will respond within 24 hours.</li>
         <li data-step="2.">We arrange an on-site visit or studio consultation.</li>
         <li data-step="3.">I prepare a detailed proposal with samples — tailored to your project.</li>
       </ol>
-      <form class="contact-form" name="contact" method="POST" data-netlify="true">
+      <form class="contact-form" name="contact" method="POST" data-netlify="true" netlify-honeypot="company-website">
         <input type="hidden" name="form-name" value="contact" />
+        <input type="hidden" name="form-source" value="contact" />
         <div class="form-row">
           <input type="text" name="name" placeholder="Your Name" required />
           <input type="email" name="email" placeholder="Email Address" required />
@@ -800,16 +814,25 @@
           </select>
         </div>
         <div class="form-row">
-          <select name="budget-range">
-            <option value="" disabled selected>Investment range (optional)</option>
+          <select name="budget-range" required aria-label="Project investment">
+            <option value="" disabled selected>Project investment</option>
             <option value="under-5k">Under $5,000</option>
             <option value="5-15k">$5,000 – $15,000</option>
             <option value="15-50k">$15,000 – $50,000</option>
             <option value="50k-plus">$50,000+</option>
             <option value="not-sure">Not sure yet</option>
           </select>
+          <select name="timeline" aria-label="When would you like to begin? (optional)">
+            <option value="" disabled selected>Timeline (optional)</option>
+            <option value="0-3mo">Within 3 months</option>
+            <option value="3-6mo">In 3 – 6 months</option>
+            <option value="6-12mo">In 6 – 12 months</option>
+            <option value="just-ideas">Just exploring for now</option>
+          </select>
         </div>
-        <textarea name="message" rows="4" placeholder="Anything else you'd like to share — the space, inspiration, or ideas you have in mind..."></textarea>
+        <input type="text" name="project-location" placeholder="Project city or ZIP" required aria-label="Project city or ZIP" autocomplete="postal-code" />
+        <textarea name="message" rows="4" placeholder="Tell me about the space and what you have in mind — room, size, style, inspiration..."></textarea>
+        <p class="hp" aria-hidden="true"><label>Leave this field empty <input type="text" name="company-website" tabindex="-1" autocomplete="off" /></label></p>
         <button type="submit" class="btn-primary">Begin a Commission</button>
       </form>
       <p class="contact-direct center">Or call &amp; text directly: <a href="tel:+19546218322">(954) 621-8322</a></p>
@@ -959,6 +982,17 @@
 
         const formData = new FormData(contactForm);
         const data = Object.fromEntries(formData.entries());
+
+        // Honeypot: humans never see "company-website". If it's filled, a bot
+        // did it. Show the normal thank-you but send nothing anywhere.
+        if ((data['company-website'] || '').trim()) {
+          const s = document.createElement('p'); s.className = 'form-success';
+          s.textContent = contactForm.dataset.success || 'Thank you. Breanna will respond personally within 24 hours.';
+          contactForm.parentNode.insertBefore(s, contactForm); contactForm.reset();
+          if (submitBtn) { submitBtn.disabled = false; submitBtn.textContent = originalBtnText; }
+          return;
+        }
+        delete data['company-website'];
         data.event_id = (crypto.randomUUID && crypto.randomUUID()) ||
                         Date.now() + '-' + Math.random().toString(36).slice(2);
         data.page_url = window.location.href;
@@ -981,13 +1015,28 @@
 
         await Promise.allSettled([netlifyPost, atelierPost]);
 
-        // Path 3: Meta Pixel Lead event with eventID for CAPI dedup.
+        // Path 3: Meta Pixel. Only commission inquiries where the person chose
+        // a budget range count as a "Lead". Portfolio requests and "Not sure
+        // yet" budgets still reach the CRM but are reported to Meta as custom
+        // events, so the ad algorithm learns to find people with real projects.
+        // MUST match the `qualified` rule in atelier-backend intake.mjs.
+        const qualifies = d => d['form-source'] !== 'portfolio'
+          && d.subject !== 'Studio Portfolio request'
+          && ['under-5k', '5-15k', '15-50k', '50k-plus'].includes(d['budget-range']);
+        if (!qualifies(data)) {
+          try {
+            const isPortfolio = data['form-source'] === 'portfolio';
+            window.fbq && fbq('trackCustom', isPortfolio ? 'PortfolioRequest' : 'InquiryUnqualified',
+              { form_source: data['form-source'] || 'contact', budget: data['budget-range'] || 'none' });
+          } catch (err) { console.warn('[fbq] soft', err); }
+        }
+        // Lead event with eventID for CAPI dedup.
         // Backend (atelier-backend) also fires Lead via Conversions API with
         // the same event_id; Meta deduplicates server-event ⊕ browser-event.
         try {
           const budgetBand = { 'under-5k': 2500, '5-15k': 10000, '15-50k': 32500, '50k-plus': 75000 };
           const value = budgetBand[data['budget-range']] || 0;
-          window.fbq && fbq('track', 'Lead',
+          if (qualifies(data)) window.fbq && fbq('track', 'Lead',
             { value, currency: 'USD',
               content_category: data['project-type'] || 'commission',
               content_name: data.subject || 'Commission inquiry' },

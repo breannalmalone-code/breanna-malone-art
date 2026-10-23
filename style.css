@@ -887,3 +887,8 @@ footer { background: var(--charcoal-dk); padding: 3.5rem var(--gutter); border-t
 @media (prefers-reduced-motion: reduce) {
   .marquee-track { animation: none; }
 }
+
+/* Lead-quality pass (Oct 2026): honeypot + audience note */
+.hp { position: absolute !important; left: -10000px !important; width: 1px; height: 1px; overflow: hidden; }
+.hero-form-note { margin: -0.35rem 0 1rem; font-size: 0.85rem; line-height: 1.45; color: var(--mid-text); }
+.contact-form > input[name="project-location"] { width: 100%; }
